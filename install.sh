@@ -1,5 +1,6 @@
-#! /bin/env bash
+#! /bin/bash
 
+cd "$(dirname "$0")"
 cp ./dotfiles/.gitconfig ~
 
 sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
