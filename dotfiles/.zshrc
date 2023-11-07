@@ -101,12 +101,4 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 DISABLE_AUTO_UPDATE=true
 DISABLE_UPDATE_PROMPT=true
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$PATH:/opt/gnu-arm-none-eabi/bin/"
-export ARM_TOOLS_PATH="/opt/gnu-arm-none-eabi/bin"
-
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-source "$HOME/.cargo/env"
-export KUBECONFIG="$HOME/.kube/config" 
+export PATH="/snap/bin:$HOME/.local/bin:$PATH"
