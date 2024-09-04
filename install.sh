@@ -1,15 +1,17 @@
 #! /bin/bash
 
+
 # Theme Name
-ZSH_THEME="sully"
+NEW_THEME="sully"
 # Path to the .zshrc file
 ZSHRC_FILE="$HOME/.zshrc"
+
 
 # ============================================================================================
 
 cd "$(dirname "$0")"
 
-if [ ! -d "$DIRECTORY" ]; then
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
   sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 fi
 
