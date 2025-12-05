@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
 set -ex
-
-stow --restow fonts -t $HOME
+source _stow.sh
+slide_and_stow fonts $HOME
 fc-cache -f

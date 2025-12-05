@@ -1,4 +1,7 @@
 #! /usr/bin/env bash
+set -ex
+source _stow.sh
+
 sudo apt update
 sudo apt install -y zsh
 
@@ -6,5 +9,5 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
   sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 fi
 
-stow --dotfiles -t $HOME zsh
-stow --dotfiles -t $HOME oh-my-zsh
+slide_and_stow zsh $HOME
+slide_and_stow oh-my-zsh $HOME

@@ -1,12 +1,11 @@
-return -- Lazy
+return
 {
-  "olimorris/onedarkpro.nvim",
-  lazy = false,
-  name = "onedark",
-  priority = 1000,
-
-  config = function() 
-	vim.cmd("colorscheme onedark")
-  end	
+  "navarasu/onedark.nvim",
+  priority = 1000, -- make sure to load this before all the other start plugins
+  config = function()
+    require('onedark').setup {
+      style = 'warmer'
+    }
+    require('onedark').load()
+  end
 }
-

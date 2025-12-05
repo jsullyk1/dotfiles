@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-
 set -ex
+source _stow.sh
 
 sudo snap install yazi --classic
-
-stow --restow yazi -t $HOME
+slide_and_stow yazi $HOME

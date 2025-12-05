@@ -2,6 +2,6 @@
 
 set -ex
 
-sudo apt update && sudo apt install gnome-tweaks
+sudo apt update && sudo apt install -y gnome-tweaks
 
 dconf load / < gnome.dconf
