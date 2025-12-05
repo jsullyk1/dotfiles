@@ -77,6 +77,8 @@ source "$HOME/.cargo/env"
 
 # User configuration
 
+export EDITOR='nvim'
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -111,3 +113,4 @@ fi
 
 alias lla="ls -al"
 alias vim=nvim
+alias kiss="kitten ssh"
