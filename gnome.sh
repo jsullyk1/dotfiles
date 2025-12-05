@@ -7,10 +7,12 @@ sudo apt update && sudo apt install -y \
     gnome-shell-extensions \
     gnome-shell-extension-manager
 
-wget -O gnome-shell-extension-installer "https://github.com/brunelli/gnome-shell-extension-installer/raw/master/gnome-shell-extension-installer"
-chmod +x gnome-shell-extension-installer
-sudo mv gnome-shell-extension-installer /usr/bin/
-
+if ! command -v gnome-shell-extension-installer &> /dev/null
+then
+    wget -O gnome-shell-extension-installer "https://github.com/brunelli/gnome-shell-extension-installer/raw/master/gnome-shell-extension-installer"
+    chmod +x gnome-shell-extension-installer
+    sudo mv gnome-shell-extension-installer /usr/bin/
+fi
 # Tactile 4548
 # switcher 973
 # space-bar 5090
