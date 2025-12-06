@@ -9,3 +9,4 @@ source yazi.sh
 source searching.sh
 source fonts.sh
 source kitty.sh
+source tmux.sh
