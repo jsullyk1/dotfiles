@@ -18,7 +18,9 @@ sudo apt update && sudo apt install -y \
     clang-20 \
     clangd-20 \
     clang-format-20 \
-    clang-tidy-20
+    clang-tidy-20 \
+    binutils \
+    binutils-dev
 
 if ! command -v clang &>/dev/null
 then
@@ -32,7 +34,7 @@ if ! command -v clang &>/dev/null
 then
     sudo update-alternatives --install /usr/bin/clang-format clangd /usr/bin/clang-format-20 100
 fi
-if ! command -v clang &/dev/null
+if ! command -v clang &>/dev/null
 then
     sudo update-alternatives --install /usr/bin/clangd clang-tidy /usr/bin/clang-tidy-20 100
 fi
