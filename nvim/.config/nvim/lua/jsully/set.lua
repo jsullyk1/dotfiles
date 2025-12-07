@@ -1,5 +1,6 @@
-vim.opt.guicursor = ""
-vim.opt.nu = true
+vim.g.have_nerd_font = true
+
+vim.o.number = true
 vim.opt.relativenumber = true
 
 vim.opt.tabstop = 4
