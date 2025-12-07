@@ -106,10 +106,12 @@ export EDITOR='nvim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export PATH="$PATH:$HOME/.local/bin"
+
 # Fuzzy finding
-if [[ $s(command -v rg) ]]; then
-    export FZF_DEFAULT_COMMAND='rg --hidden --ignore .git -g ""'
-fi
+# if [[ $s(command -v rg) ]]; then
+#     export FZF_DEFAULT_COMMAND='rg --hidden --ignore .git -g ""'
+# fi
 
 alias lla="ls -al"
 alias vim=nvim

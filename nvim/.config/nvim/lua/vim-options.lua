@@ -5,6 +5,7 @@ vim.o.mouse = 'a'
 vim.o.showmode = false
 vim.o.smartindent = true
 vim.o.breakindent = true
+vim.o.expandtab = true
 
 vim.o.swapfile = false
 vim.o.backup = false
@@ -22,7 +23,7 @@ vim.o.smartcase = true
 vim.o.scrolloff = 8
 vim.o.signcolumn = "yes"
 
-vim.o.updatetime = 100
+vim.o.updatetime = 50
 vim.o.timeoutlen = 300
 
 vim.o.colorcolumn = "100"

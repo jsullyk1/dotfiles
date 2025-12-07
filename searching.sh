@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
-set -ex
+set -e
 
 sudo apt update && sudo apt install -y \
     fzf \
     ripgrep \
-    bat
+    bat \
+    fd-find
+
+install -d $HOME/.local/bin
+ln -s $(which fdfind) $HOME/.local/bin/fd
