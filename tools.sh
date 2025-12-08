@@ -20,7 +20,8 @@ sudo apt update && sudo apt install -y \
     clang-format-20 \
     clang-tidy-20 \
     binutils \
-    binutils-dev
+    binutils-dev \
+    python3-venv
 
 if ! command -v clang &>/dev/null
 then
