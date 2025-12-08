@@ -6,6 +6,9 @@ vim.o.showmode = false
 vim.o.smartindent = true
 vim.o.breakindent = true
 vim.o.expandtab = true
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.autoindent = true
 
 vim.o.swapfile = false
 vim.o.backup = false
@@ -26,7 +29,7 @@ vim.o.signcolumn = "yes"
 vim.o.updatetime = 50
 vim.o.timeoutlen = 300
 
-vim.o.colorcolumn = "100"
+vim.o.colorcolumn = "120"
 vim.o.cursorline = true
 vim.o.inccommand = 'split'
 vim.o.list = true

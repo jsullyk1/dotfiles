@@ -109,10 +109,25 @@ export EDITOR='nvim'
 export PATH="$PATH:$HOME/.local/bin"
 
 # Fuzzy finding
-# if [[ $s(command -v rg) ]]; then
-#     export FZF_DEFAULT_COMMAND='rg --hidden --ignore .git -g ""'
-# fi
+if [[ $s(command -v rg) ]]; then
+    export FZF_DEFAULT_COMMAND='rg --hidden --ignore .git -g ""'
+fi
 
 alias lla="ls -al"
 alias vim=nvim
 alias kiss="kitten ssh"
+
+if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]]; then
+  tmux attach-session -t default || tmux new-session -s default
+fi
+
+SOURCE_DIR="$HOME/.config/zsh"
+# Loop through all files in the directory and source them
+for file in "$SOURCE_DIR"/*.zsh; do
+  # Check if the file exists (handles cases where no .zsh files are found)
+  if [[ -f "$file" ]]; then
+    echo "Sourcing: $file"
+    source "$file"
+  fi
+done
+

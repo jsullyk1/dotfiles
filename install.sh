@@ -9,3 +9,4 @@ source searching.sh
 source fonts.sh
 source terminal.sh
 source tmux.sh
+source nvim.sh
