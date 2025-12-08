@@ -1,0 +1,16 @@
+{
+    "Lua": {
+        "diagnostics": {
+            "globals": [
+                "vim"
+            ]
+        },
+        "workspace": {
+            "library": [
+                "${VIMRUNTIME}"
+            ],
+            "checkThirdParty": false
+        }
+    }
+}
+

@@ -23,7 +23,17 @@ return {
                             wrap = true,
                     }
             })
-    vim.keymap.set("n", "-", oil.toggle_float, {})
+    -- vim.keymap.set("n", "-", oil.toggle_float, {})
+
+    -- Keymap for toggling the float window
+    vim.keymap.set("n", "<Tab>", function()
+        if vim.bo.filetype == "oil" then
+            vim.cmd("bd") -- Close buffer if it's an oil buffer
+        else
+            require("oil").open_float() -- Open as float if not oil
+        end
+    end, { noremap = true, silent = true, desc = "Toggle Oil" })
+
   end,
   lazy = false,
 }
