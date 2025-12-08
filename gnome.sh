@@ -17,6 +17,7 @@ fi
 # switcher 973
 # space-bar 5090
 # just perfection 3843
-gnome-shell-extension-installer --yes 973 5090 4548 3843 
+# TODO: Fix these installs.
+# gnome-shell-extension-installer --yes 973 5090 4548 3843 
 
 dconf load / < gnome.dconf

@@ -8,4 +8,8 @@ sudo apt update && sudo apt install -y \
     fd-find
 
 install -d $HOME/.local/bin
-ln -s $(which fdfind) $HOME/.local/bin/fd
+
+if ! command -v fd &>/dev/null
+then
+        ln -s $(which fdfind) $HOME/.local/bin/fd
+fi

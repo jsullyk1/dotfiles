@@ -7,5 +7,5 @@ source zsh.sh
 source tools.sh
 source searching.sh
 source fonts.sh
-source kitty.sh
+source terminal.sh
 source tmux.sh
