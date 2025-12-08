@@ -4,13 +4,13 @@
 
 These are my dotfiles.
 There are many like it, but these ones are mine.
-My dotfiles are my best frient. They are my life.
+My dotfiles are my best friend. They are my life.
 I must master my dotfiles as I must master my life.
 My dotfiles without me are useless. Without my dotfiles I am useless.
 I must edit truer than my competition. 
 I will spare no keystroke lest my efficiency suffer.
 My dotfiles and myself know that what counts in the CLI is not the buttons we press
-nor the nerd fonts we posess. We know its the LOCs we delete and the code we craft.
+nor the nerd fonts we posess. We know its the LOCs we delete and the code we leave behind.
 My dotfiles live, even as I, because they are my life.
 Thus I will learn the keybindings as a brother.
 I will learn their weaknesses, their strength, their opts and their plugins.
