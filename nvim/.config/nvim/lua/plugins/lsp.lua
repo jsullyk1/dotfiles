@@ -162,7 +162,7 @@ return {
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
     local servers = {
       clangd = {},
-      pylsp = {},
+      pyright = {},
       ruff = {},
       rust_analyzer = {},
 
@@ -199,7 +199,7 @@ return {
     vim.list_extend(ensure_installed, {
       "stylua", -- Used to format Lua code
       "clangd",
-      "pylsp",
+      "pyright",
       "ruff",
       "rust_analyzer",
     })
