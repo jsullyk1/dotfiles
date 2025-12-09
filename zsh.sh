@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-set -ex
+set -e
 source _stow.sh
 
 sudo apt update

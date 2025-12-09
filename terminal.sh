@@ -7,4 +7,8 @@ if [[ ! -d "$HOME/.local/kitty.app" ]]; then
 fi
 
 slide_and_stow kitty $HOME
-gsettings set org.gnome.desktop.default-applications.terminal exec $HOME/.local/kitty.app/bin/kitty
+
+if [[ "$XDG_CURRENT_DESKTOP" == "GNOME" ]]; then
+  gsettings set org.gnome.desktop.default-applications.terminal exec $HOME/.local/kitty.app/bin/kitty
+fi
+
