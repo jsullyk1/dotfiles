@@ -109,6 +109,7 @@ export EDITOR='nvim'
 export PATH="$PATH:$HOME/.local/bin"
 
 # Fuzzy finding
+# Set up fzf key bindings and fuzzy completion
 if [[ $s(command -v rg) ]]; then
     export FZF_DEFAULT_COMMAND='rg --hidden --ignore .git -g ""'
 fi
@@ -135,3 +136,5 @@ done
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

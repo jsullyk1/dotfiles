@@ -2,10 +2,13 @@
 set -e
 
 sudo apt update && sudo apt install -y \
-    fzf \
     ripgrep \
     bat \
     fd-find
+
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+source <(fzf --zsh)
 
 install -d $HOME/.local/bin
 
