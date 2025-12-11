@@ -25,19 +25,19 @@ sudo apt update && sudo apt install -y \
 
 if ! command -v clang &>/dev/null
 then
-    sudo update-alternatives --install /usr/bin/clangd clang /usr/bin/clang-20 100
+    sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-20 100
 fi
 if ! command -v clangd &>/dev/null
 then
     sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-20 100
 fi
-if ! command -v clang &>/dev/null
+if ! command -v clang-format &>/dev/null
 then
-    sudo update-alternatives --install /usr/bin/clang-format clangd /usr/bin/clang-format-20 100
+    sudo update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-20 100
 fi
-if ! command -v clang &>/dev/null
+if ! command -v clang-tidy &>/dev/null
 then
-    sudo update-alternatives --install /usr/bin/clangd clang-tidy /usr/bin/clang-tidy-20 100
+    sudo update-alternatives --install /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-20 100
 fi
 # Install rust if it is not already there.
 if ! [ -x "$(command -v cargo)" ]; then

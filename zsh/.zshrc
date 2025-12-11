@@ -124,13 +124,15 @@ fi
 
 SOURCE_DIR="$HOME/.config/zsh"
 # Loop through all files in the directory and source them
-for file in "$SOURCE_DIR"/*.zsh; do
-  # Check if the file exists (handles cases where no .zsh files are found)
-  if [[ -f "$file" ]]; then
-    echo "Sourcing: $file"
-    source "$file"
-  fi
-done
+if [[ -d "$SOURCE_DIR" ]] then
+  for file in "$SOURCE_DIR"/*.zsh; do
+    # Check if the file exists (handles cases where no .zsh files are found)
+    if [[ -f "$file" ]]; then
+      echo "Sourcing: $file"
+      source "$file"
+    fi
+  done
+fi
 
 
 export NVM_DIR="$HOME/.nvm"

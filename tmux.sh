@@ -13,6 +13,7 @@ gsettings set org.gnome.desktop.default-applications.terminal exec $HOME/.local/
 sudo apt update && sudo apt install -y \
     tmux
 
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
+if [[ ! -d "$HOME/.tmux/plugins/tpm" ]]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
 slide_and_stow "tmux" $HOME
