@@ -2,7 +2,7 @@
 set -ex
 source _stow.sh
 
-if [[ ! -d "$HOME/.local/kitty.app" ]]; then
+if ! [ -x "$(command -v kitty)" ]; then
     curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 fi
 
@@ -12,3 +12,16 @@ if [[ "$XDG_CURRENT_DESKTOP" == "GNOME" ]]; then
   gsettings set org.gnome.desktop.default-applications.terminal exec $HOME/.local/kitty.app/bin/kitty
 fi
 
+if [ -x "$(command -v apt)" ]; then
+    sudo apt update && sudo apt install -y \
+        tmux
+fi
+
+if [ -x "$(command -v brew)" ]; then
+    brew install tmux
+fi
+
+if [[ ! -d "$HOME/.tmux/plugins/tpm" ]]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+slide_and_stow "tmux" $HOME
