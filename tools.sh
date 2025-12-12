@@ -21,7 +21,8 @@ sudo apt update && sudo apt install -y \
     clang-tidy-20 \
     binutils \
     binutils-dev \
-    python3-venv
+    python3-venv \
+    btop
 
 if ! command -v clang &>/dev/null
 then
