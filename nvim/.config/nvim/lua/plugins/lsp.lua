@@ -181,6 +181,7 @@ return {
       pyright = {},
       ruff = {},
       rust_analyzer = {},
+      zls = {},
     }
 
     -- Ensure the servers and tools above are installed
@@ -204,7 +205,8 @@ return {
       "pyright",
       "ruff",
       "rust_analyzer",
-      "stylua", -- Used to format Lua code
+      "stylua",
+      "zls"
     })
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
