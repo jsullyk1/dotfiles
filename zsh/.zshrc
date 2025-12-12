@@ -1,11 +1,11 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Path to your Oh My Zsh installation.
+# Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
-# load a random theme each time Oh My Zsh is loaded, in which case,
+# load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="sully"
@@ -73,11 +73,8 @@ ZSH_THEME="sully"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
-source "$HOME/.cargo/env"
 
 # User configuration
-
-export EDITOR='nvim'
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -88,55 +85,26 @@ export EDITOR='nvim'
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='nvim'
+#   export EDITOR='mvim'
 # fi
 
 # Compilation flags
-# export ARCHFLAGS="-arch $(uname -m)"
+# export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by Oh My Zsh libs,
-# plugins, and themes. Aliases can be placed here, though Oh My Zsh
-# users are encouraged to define aliases within a top-level file in
-# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
-# - $ZSH_CUSTOM/aliases.zsh
-# - $ZSH_CUSTOM/macos.zsh
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-export PATH="$PATH:$HOME/.local/bin"
-
-# Fuzzy finding
-# Set up fzf key bindings and fuzzy completion
-if [[ $s(command -v rg) ]]; then
-    export FZF_DEFAULT_COMMAND='rg --hidden --ignore .git -g ""'
-fi
-
-alias lla="ls -al"
-alias vim=nvim
-alias kiss="kitten ssh"
-
-if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]]; then
-  tmux attach-session -t default || tmux new-session -s default
-fi
-
-SOURCE_DIR="$HOME/.config/zsh"
-# Loop through all files in the directory and source them
-if [[ -d "$SOURCE_DIR" ]] then
-  for file in "$SOURCE_DIR"/*.zsh; do
-    # Check if the file exists (handles cases where no .zsh files are found)
-    if [[ -f "$file" ]]; then
-      echo "Sourcing: $file"
-      source "$file"
-    fi
-  done
-fi
-
-
+DISABLE_AUTO_UPDATE=true
+DISABLE_UPDATE_PROMPT=true
+export PATH="/snap/bin:$HOME/.local/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+alias vim="nvim"
