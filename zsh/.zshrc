@@ -14,7 +14,7 @@ precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
 
 
-PROMPT="/ %{$fg[cyan]%}%c%{$reset_color%} / %(?:%{$fg_bold[green]%} :%{$fg_bold[red]%} ) %{$reset_color%}"
+PROMPT="%{$fg[cyan]%}%c%{$reset_color%} %(?:%{$fg_bold[green]%} :%{$fg_bold[red]%} ) %{$reset_color%}"
 
 
 # Load and initialise completion system
