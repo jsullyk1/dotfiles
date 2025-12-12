@@ -5,7 +5,7 @@ if ! [ -x "$(command -v brew)" ]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-brew install aerospace stow uv shellcheck shfmt
+brew install aerospace stow uv shellcheck shfmt zig
 
 uv python install 3.15
 
