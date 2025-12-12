@@ -22,7 +22,9 @@ sudo apt update && sudo apt install -y \
     binutils \
     binutils-dev \
     python3-venv \
-    btop
+    btop \
+    shellfmt \
+    shfmt
 
 if ! command -v clang &>/dev/null
 then
