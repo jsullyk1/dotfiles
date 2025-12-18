@@ -6,6 +6,17 @@ plug "zsh-users/zsh-syntax-highlighting"
 
 autoload -Uz vcs_info
 autoload -U colors && colors
+# Load necessary modules and functions
+autoload -Uz history-search-end
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zmodload zsh/terminfo
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+
+# Bind arrow keys
+bindkey "$terminfo[kcuu1]" history-beginning-search-backward-end
+bindkey "$terminfo[kcud1]" history-beginning-search-forward-end
+
 
 zstyle ':vcs_info:*' enable git 
 
@@ -51,5 +62,5 @@ if [[ $s(command -v rg) ]]; then
 fi
 
 if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]]; then
-  tmux attach-session -t default || tmux new-session -s default
+    tmux new-session -s default$(date +"%s")
 fi
