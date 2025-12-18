@@ -84,10 +84,11 @@ vim.keymap.set({ "n", "v" }, "<leader>d", "\"_d")
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 --
-vim.keymap.set("n", "Q", "<nop>")
-
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
+vim.keymap.set("n", "<Esc>", function()
+    require("notify").dismiss()
+end, { desc = "Dismiss notify popup" })
 -- I don't understand these yet
 -- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 -- vim.keymap.set("n", "<M-h>", "<cmd>silent !tmux-sessionizer -s 0 --vsplit<CR>")
