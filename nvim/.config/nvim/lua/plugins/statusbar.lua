@@ -1,10 +1,10 @@
 return {
-    { 'vimpostor/vim-tpipeline',
-        config = function()
-            -- Embedd into tmux
-            vim.g.tpipeline_autoembed = 1
-        end,
-    },
+    -- { 'vimpostor/vim-tpipeline',
+    --     config = function()
+    --         -- Embedd into tmux
+    --         -- vim.g.tpipeline_autoembed = 1
+    --     end,
+    -- },
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -27,9 +27,9 @@ return {
                 },
             })
 
-            if os.getenv('TMUX') then
-                vim.defer_fn(function() vim.o.laststatus=0 end, 0)
-            end
+            -- if os.getenv('TMUX') then
+            --     vim.defer_fn(function() vim.o.laststatus=0 end, 0)
+            -- end
         end,
     },
 }
