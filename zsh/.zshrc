@@ -56,3 +56,7 @@ fi
 if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]]; then
     tmux new-session -s default$(date +"%s")
 fi
+
+if [[ $s(command -v zoxide) ]]; then
+    eval "$(zoxide init --cmd cd zsh)"
+fi
