@@ -4,18 +4,15 @@ plug "zsh-users/zsh-autosuggestions"
 plug "zap-zsh/supercharge"
 plug "zsh-users/zsh-syntax-highlighting"
 
-autoload -Uz vcs_info
 autoload -U colors && colors
-# Load necessary modules and functions
+
+# Smarter history search
 autoload -Uz history-search-end
-autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
-zmodload zsh/terminfo
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 
-# Bind arrow keys
-bindkey "$terminfo[kcuu1]" history-beginning-search-backward-end
-bindkey "$terminfo[kcud1]" history-beginning-search-forward-end
+bindkey '^[[A' history-beginning-search-backward-end  # Up arrow
+bindkey '^[[B' history-beginning-search-forward-end   # Down arrow
 
 PROMPT="%{$fg[cyan]%}%c%{$reset_color%} %(?:%{$fg_bold[green]%} :%{$fg_bold[red]%} ) %{$reset_color%}"
 
@@ -51,10 +48,6 @@ fi
 # Set up fzf key bindings and fuzzy completion
 if [[ $s(command -v rg) ]]; then
     export FZF_DEFAULT_COMMAND='rg --hidden --ignore .git -g ""'
-fi
-
-if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]]; then
-    tmux new-session -s default$(date +"%s")
 fi
 
 if [[ $s(command -v zoxide) ]]; then
