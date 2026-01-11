@@ -1,16 +1,16 @@
 return {
   {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    dependencies = {
-      { "github/copilot.vim", lazy = false, commit = "..." }, -- or zbirenbaum/copilot.lua
-      { "nvim-lua/plenary.nvim" }, -- Required dependency
-      { "nvim-telescope/telescope.nvim" }, -- Optional, but recommended for better UI/UX
-    },
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    build = ":Copilot auth",
     config = function()
-      require("CopilotChat").setup({
-        -- Your configuration options here (optional)
-        -- e.g., window layout, keymaps, etc.
-      })
+      require("copilot").setup({
+        enabled = false,
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      });
+      vim.cmd(":Copilot disable");
     end,
   },
   { -- Autocompletion
@@ -21,30 +21,13 @@ return {
       -- Snippet Engine
       {
         "L3MON4D3/LuaSnip",
-        version = "2.*",
-        build = (function()
-          -- Build Step is needed for regex support in snippets.
-          -- This step is not supported in many windows environments.
-          -- Remove the below condition to re-enable on windows.
-          if vim.fn.has("win32") == 1 or vim.fn.executable("make") == 0 then
-            return
-          end
-          return "make install_jsregexp"
-        end)(),
-        dependencies = {
-          -- `friendly-snippets` contains a variety of premade snippets.
-          --    See the README about individual language/framework/plugin snippets:
-          --    https://github.com/rafamadriz/friendly-snippets
-          -- {
-          --   'rafamadriz/friendly-snippets',
-          --   config = function()
-          --     require('luasnip.loaders.from_vscode').lazy_load()
-          --   end,
-          -- },
-        },
-        opts = {},
+        -- follow latest release.
+        version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+        -- install jsregexp (optional!).
+        build = "make install_jsregexp",
       },
       "folke/lazydev.nvim",
+      "giuxtaposition/blink-cmp-copilot",
     },
     --- @module 'blink.cmp'
     --- @type blink.cmp.Config
@@ -81,34 +64,72 @@ return {
         -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
         -- Adjusts spacing to ensure icons are aligned
         nerd_font_variant = "mono",
-      },
+        -- Blink does not expose its default kind icons so you must copy them all (or set your custom ones) and add Copilot
+        kind_icons = {
+          Copilot = "",
+          Text = "󰉿",
+          Method = "󰊕",
+          Function = "󰊕",
+          Constructor = "󰒓",
 
+          Field = "󰜢",
+          Variable = "󰆦",
+          Property = "󰖷",
+
+          Class = "󱡠",
+          Interface = "󱡠",
+          Struct = "󱡠",
+          Module = "󰅩",
+
+          Unit = "󰪚",
+          Value = "󰦨",
+          Enum = "󰦨",
+          EnumMember = "󰦨",
+
+          Keyword = "󰻾",
+          Constant = "󰏿",
+
+          Snippet = "󱄽",
+          Color = "󰏘",
+          File = "󰈔",
+          Reference = "󰬲",
+          Folder = "󰉋",
+          Event = "󱐋",
+          Operator = "󰪚",
+          TypeParameter = "󰬛",
+        },
+      },
       completion = {
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
         documentation = { auto_show = false, auto_show_delay_ms = 500 },
       },
-
       sources = {
-        default = { "lsp", "path", "snippets", "lazydev" },
+        default = { "lsp", "path", "snippets", "lazydev", "copilot" },
         providers = {
           lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
+          copilot = {
+            name = "copilot",
+            module = "blink-cmp-copilot",
+            score_offset = -100,
+            async = true,
+            transform_items = function(_, items)
+              local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
+              local kind_idx = #CompletionItemKind + 1
+              CompletionItemKind[kind_idx] = "Copilot"
+              for _, item in ipairs(items) do
+                item.kind = kind_idx
+              end
+              return items
+            end,
+          },
         },
       },
 
       snippets = { preset = "luasnip" },
-
-      -- Blink.cmp includes an optional, recommended rust fuzzy matcher,
-      -- which automatically downloads a prebuilt binary when enabled.
-      --
-      -- By default, we use the Lua implementation instead, but you may enable
-      -- the rust implementation via `'prefer_rust_with_warning'`
-      --
-      -- See :h blink-cmp-config-fuzzy for more information
-      fuzzy = { implementation = "lua" },
-
+      fuzzy = { implementation = "prefer_rust_with_warning" },
       -- Shows a signature help window while you type arguments for a function
-      signature = { enabled = true },
+      signature = { enabled = false },
     },
   },
 }
