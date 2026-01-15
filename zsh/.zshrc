@@ -1,25 +1,8 @@
-# Created by Zap installer
-[ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
-plug "zsh-users/zsh-autosuggestions"
-plug "zap-zsh/supercharge"
-plug "zsh-users/zsh-syntax-highlighting"
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="sully"
 
-autoload -U colors && colors
-
-# Smarter history search
-autoload -Uz history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-
-bindkey '^[[A' history-beginning-search-backward-end  # Up arrow
-bindkey '^[[B' history-beginning-search-forward-end   # Down arrow
-
-PROMPT="%{$fg[cyan]%}%c%{$reset_color%} %(?:%{$fg_bold[green]%} :%{$fg_bold[red]%} ) %{$reset_color%}"
-
-
-# Load and initialise completion system
-autoload -Uz compinit
-compinit
+plugins=(git)
+source $ZSH/oh-my-zsh.sh
 
 export EDITOR="nvim"
 export PATH="$HOME/.local/bin:$PATH"
@@ -31,7 +14,6 @@ export NVM_DIR="$HOME/.nvm"
 
 alias vim="nvim"
 alias kiss="kitten ssh"
-
 
 SOURCE_DIR="$XDG_CONFIG_HOME/zsh"
 if [[ -d "$SOURCE_DIR" ]] then
