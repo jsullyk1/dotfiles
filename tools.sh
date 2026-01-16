@@ -24,7 +24,8 @@ sudo apt update && sudo apt install -y \
     python3-venv \
     btop \
     shellfmt \
-    shfmt
+    shfmt \
+    stow
 
 if ! command -v clang &>/dev/null
 then
