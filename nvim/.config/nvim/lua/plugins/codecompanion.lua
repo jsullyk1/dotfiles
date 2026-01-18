@@ -3,16 +3,14 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
-    "github/copilot.vim"
+    "github/copilot.vim",
   },
   config = function()
     require("codecompanion").setup({
       adapters = {
-        copilot = function()
-          return require("codecompanion.adapters").extend("copilot", {
-            -- Add your Copilot API key if needed (often not required for standard Copilot)
-          })
-        end,
+        copilot = {
+          suggest_auto_trigger = false,
+        },
       },
       strategies = {
         chat = { adapter = "copilot" },
