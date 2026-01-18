@@ -4,37 +4,12 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
   },
-  config = function()
-    require("codecompanion").setup({
-      adapters = {
-        copilot = function()
-          return require("codecompanion.adapters").extend("copilot", {
-            schema = {
-              model = {
-                default = "gpt-4o", -- Copilot currently routes internally
-              },
-            },
-          })
-        end,
-      },
-
-      strategies = {
+  opts = {
+    interactions = {
         chat = {
-          adapter = "copilot",
+            adapter = "opencode",
+            model = "GPT-4o"
         },
-        inline = {
-          adapter = "copilot",
-        },
-      },
-
-      display = {
-        chat = {
-          window = {
-            layout = "vertical",
-            width = 0.45,
-          },
-        },
-      },
-    })
-  end,
+    },
+  },
 }
