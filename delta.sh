@@ -22,3 +22,8 @@ if [[ -n "$(command -v brew)" ]]; then
     brew install git-delta
     setup_delta 
 fi
+
+if [[ -n "$(command -v pacman)" ]]; then
+    sudo pacman -S git-delta
+    setup_delta 
+fi

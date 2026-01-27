@@ -5,7 +5,7 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 export EDITOR="nvim"
-export PATH="/snap/bin:$HOME/.local/bin:$HOME/.opencode/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.opencode/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -13,7 +13,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 alias vim="nvim"
-alias kiss="kitten ssh"
 
 SOURCE_DIR="$XDG_CONFIG_HOME/zsh"
 if [[ -d "$SOURCE_DIR" ]] then
