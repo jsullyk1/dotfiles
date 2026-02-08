@@ -1,7 +1,16 @@
 return {
     {
         "mfussenegger/nvim-dap",
+        dependencies = {
+            "williamboman/mason.nvim",
+            "jay-babu/mason-nvim-dap.nvim",
+        },
         config = function()
+            require("mason-nvim-dap").setup({
+                ensure_installed = { "codelldb", "cppdbg", "gdb" },
+                handlers = {},
+            })
+
             local dap = require("dap")
 
             -- LLDB adapter
@@ -10,6 +19,7 @@ return {
                 command = "lldb-dap", -- or "lldb-dap" on some systems
                 name = "lldb",
             }
+
 
             -- Zig configuration
             dap.configurations.zig = {
@@ -29,7 +39,27 @@ return {
                     args = {},
                 },
             }
+            dap.configurations.cpp = {
+                {
+                    name = "Launch file",
+                    type = "cppdbg",
+                    request = "launch",
+                    program = function()
+                        -- Prompt the user for the executable to debug
+                        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+                    end,
+                    cwd = "${workspaceFolder}",
+                    stopAtEntry = true,
+                    -- additional options can be added here, like externalConsole, args, etc.
+                    MIMode = "gdb",                  -- or "lldb" if you prefer
+                    miDebuggerPath = "/usr/bin/gdb", -- or "/usr/bin/lldb"
+                    setupCommands = {
+                        { text = "-enable-pretty-printing", description = "enable pretty printing", ignoreFailures = false },
+                    },
+                },
+            }
 
+            dap.configurations.c = dap.configurations.cpp
             -- Keymaps
             local map = vim.keymap.set
             map("n", "<F5>", dap.continue, { desc = "DAP Continue" })
@@ -58,6 +88,12 @@ return {
             dap.listeners.before.event_exited["dapui"] = function()
                 dapui.close()
             end
+
+            vim.keymap.set('n', '<leader>dK', function()
+                dap.disconnect()
+                dap.close()
+                dapui.close()
+            end)
         end,
     },
 }
