@@ -7,7 +7,6 @@ return {
         none_ls.builtins.formatting.stylua,
         none_ls.builtins.formatting.prettier,
         none_ls.builtins.formatting.shellharden,
-        none_ls.builtins.diagnostics.erb_lint,
       },
     })
 
