@@ -2,6 +2,9 @@
 set -e
 source _stow.sh
 
+if [ -x "$(command -v apt)" ]; then
+    apt install -y tmux
+fi    
 
 if [ -x "$(command -v brew)" ]; then
     brew install tmux
