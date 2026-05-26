@@ -238,6 +238,14 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
 })
 
+-- Auto-reload files changed outside of nvim
+-- autoread=true (set above) handles the actual reload; these events trigger the check.
+-- FocusGained fires every time you jump back from the Claude tmux pane.
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI", "TermLeave" }, {
+  group = augroup,
+  command = "silent! checktime",
+})
+
 -- Command-line completion
 vim.opt.wildmenu = true
 vim.opt.wildmode = "longest:full,full"
