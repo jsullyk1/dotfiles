@@ -3,9 +3,13 @@ return {
   opts = {},
   dependencies = {
     { "echasnovski/mini.icons", lazy = false },
-    { "nvim-tree/nvim-web-devicons" }
   },
   config = function()
+    -- Set up mini.icons as the icon provider and mock nvim-web-devicons for
+    -- plugins that require it (lualine, telescope, etc.)
+    require('mini.icons').setup()
+    require('mini.icons').mock_nvim_web_devicons()
+
     local oil = require("oil")
     oil.setup(
             {

@@ -1,11 +1,6 @@
 return {
     -- Highlight todo, notes, etc in comments
     { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
-    {
-        'windwp/nvim-autopairs',
-        event = "InsertEnter",
-        config = true
-    },
     { -- Collection of various small independent plugins/modules
         'echasnovski/mini.nvim',
         config = function()
@@ -24,8 +19,8 @@ return {
             -- - sr)'  - [S]urround [R]eplace [)] [']
             require('mini.surround').setup()
 
-            -- ... and there is more!
-            --  Check out: https://github.com/echasnovski/mini.nvim
+            -- Auto-pair brackets, quotes, etc. (replaces nvim-autopairs)
+            require('mini.pairs').setup()
         end,
     },
 }
