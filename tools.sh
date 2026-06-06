@@ -19,7 +19,6 @@ sudo apt update && sudo apt install -y \
     binutils-dev \
     python3-venv \
     btop \
-    shellfmt \
     shfmt \
     stow
 
