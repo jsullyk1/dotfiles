@@ -11,33 +11,27 @@ sudo apt update && sudo apt install -y \
     automake \
     pkg-config \
     build-essential \
-    clang-21 \
-    clangd-21 \
-    clang-format-21 \
-    clang-tidy-21 \
+    clang-22 \
+    clangd-22 \
+    clang-format-22 \
+    clang-tidy-22 \
+    llvm-22
+    lld-22
     binutils \
     binutils-dev \
     python3-venv \
+    ninja-build \
     btop \
     shfmt \
     stow
 
-if ! command -v clang &>/dev/null
-then
-    sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-21 100
-fi
-if ! command -v clangd &>/dev/null
-then
-    sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-21 100
-fi
-if ! command -v clang-format &>/dev/null
-then
-    sudo update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-21 100
-fi
-if ! command -v clang-tidy &>/dev/null
-then
-    sudo update-alternatives --install /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-21 100
-fi
+sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-22 1
+sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-22 1
+sudo update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-22 1
+sudo update-alternatives --install /usr/bin/clang-tidy clang-tidy /usr/bin/clang-tidy-22 1
+sudo update-alternatives --install /usr/bin/lld lld /usr/bin/lld-22 1
+sudo update-alternatives --install /usr/bin/llvm-config llvm-config /usr/bin/llvm-config-22 1
+
 # Install rust if it is not already there.
 if ! [ -x "$(command -v cargo)" ]; then
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
