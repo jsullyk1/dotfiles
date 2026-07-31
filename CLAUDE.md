@@ -56,6 +56,8 @@ lua/
 
 **Plugin manager**: [lazy.nvim](https://github.com/folke/lazy.nvim) (auto-installed on first launch). `lazy-lock.json` is intentionally gitignored.
 
+**Treesitter**: pinned to nvim-treesitter's `main` branch — `master` is locked to Nvim 0.11 and breaks highlighting on 0.12. `main` requires the `tree-sitter` CLI (>=0.26.1, installed by `tools.sh`) plus a C compiler, since it builds every parser locally. It has no `highlight`/`auto_install` options, so `treesitter.lua` starts highlighting from a `FileType` autocommand and installs missing parsers on demand. Parsers live in `~/.local/share/nvim/site/parser/`.
+
 **Plugin files** (`lua/plugins/`):
 | File | Purpose |
 |------|---------|

@@ -45,3 +45,15 @@ NVM_DIR="$HOME/.nvm"
 nvm install --lts
 
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+
+# nvim-treesitter (main branch) builds every parser with `tree-sitter build`, so
+# the CLI is required. Distro packages lag badly (Ubuntu ships 0.20), and the
+# npm package is explicitly unsupported, so take the upstream release binary.
+if ! [ -x "$(command -v tree-sitter)" ]; then
+    mkdir -p "$HOME/.local/bin"
+    curl -sSL -o /tmp/tree-sitter.gz \
+        https://github.com/tree-sitter/tree-sitter/releases/latest/download/tree-sitter-linux-x64.gz
+    gunzip -f /tmp/tree-sitter.gz
+    chmod +x /tmp/tree-sitter
+    mv /tmp/tree-sitter "$HOME/.local/bin/tree-sitter"
+fi
