@@ -27,9 +27,9 @@ slide_and_stow nvim $HOME
 
 **Install everything for a terminal setup**:
 ```sh
-./installers/terminal.sh   # kitty + zsh + tmux
-./installers/nvim.sh       # neovim + stow nvim config
-./installers/tools.sh      # LLVM, Rust, Node/NVM, Zig, etc.
+./terminal.sh   # kitty + zsh + tmux
+./nvim.sh       # neovim + stow nvim config
+./tools.sh      # LLVM, Rust, Node/NVM, Zig, tree-sitter CLI, etc.
 ```
 
 ## Package Structure
@@ -112,5 +112,5 @@ Custom powerline theme: `tmux/.config/tmux-powerline/themes/jsully.sh`
 
 1. Create a new directory with the tool name
 2. Mirror the target path structure inside it (e.g., `.config/tool/tool.conf`)
-3. Run `stow <toolname> -t $HOME` or add a new `installers/<tool>.sh`
-4. If there's an install step, follow the pattern in existing `installers/` scripts (check for apt/brew/pacman, then stow)
+3. Run `stow <toolname> -t $HOME` or add a new `<tool>.sh` in the repo root
+4. If there's an install step, follow the pattern in the existing root-level installer scripts (check for apt/brew/pacman, then stow)

@@ -15,8 +15,8 @@ sudo apt update && sudo apt install -y \
     clangd-22 \
     clang-format-22 \
     clang-tidy-22 \
-    llvm-22
-    lld-22
+    llvm-22 \
+    lld-22 \
     binutils \
     binutils-dev \
     python3-venv \
