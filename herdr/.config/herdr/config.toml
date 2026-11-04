@@ -1,3 +1,4 @@
+onboarding = false
 # Herdr TUI config — https://herdr.dev/tui/docs/configuration/
 # Validate: herdr config check
 # Reload:   herdr server reload-config
@@ -31,6 +32,10 @@ red           = "#de5d68"
 blue          = "#57a5e5"
 teal          = "#51a8b3"  # cyan
 peach         = "#c49060"  # orange
+
+[ui]
+pane_gaps = false           # adjacent panes share one divider border (no gutter)
+pane_outer_borders = false  # tmux-style: only dividers between splits, no outside frame
 
 # ---------------------------------------------------------------------------
 # Vim-aware pane navigation (vim-tmux-navigator equivalent)
