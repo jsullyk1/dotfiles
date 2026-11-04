@@ -1,0 +1,72 @@
+# Herdr TUI config — https://herdr.dev/tui/docs/configuration/
+# Validate: herdr config check
+# Reload:   herdr server reload-config
+# Defaults: herdr --default-config
+#
+# Mouse is on by default: click to focus, drag borders to resize,
+# wheel for scrollback, drag-select to copy.
+
+# ---------------------------------------------------------------------------
+# Theme: OneDark "warmer" — same palette as nvim (onedark.nvim, style = "warmer")
+# ---------------------------------------------------------------------------
+[theme]
+name = "one-dark"
+
+[theme.custom]
+panel_bg      = "reset"    # keep kitty's (transparent) background, like nvim
+accent        = "#57a5e5"  # blue
+active_row_bg = "#2c2d31"  # bg1
+selection_bg  = "#2c485f"  # diff_text
+surface0      = "#2c2d31"  # bg1
+surface1      = "#35363b"  # bg2
+surface_dim   = "#232326"  # bg0
+overlay0      = "#5a5b5e"  # grey
+overlay1      = "#818387"  # light_grey
+text          = "#a7aab0"  # fg
+subtext0      = "#818387"  # light_grey
+mauve         = "#bb70d2"  # purple
+green         = "#8fb573"
+yellow        = "#dbb671"
+red           = "#de5d68"
+blue          = "#57a5e5"
+teal          = "#51a8b3"  # cyan
+peach         = "#c49060"  # orange
+
+# ---------------------------------------------------------------------------
+# Vim-aware pane navigation (vim-tmux-navigator equivalent)
+#
+# ctrl+h/j/k/l: if the focused pane runs (n)vim/fzf the key is passed through
+# so nvim can move between its own splits; at nvim's edge, nvim calls
+# `herdr pane focus` itself (see nvim/.config/nvim/lua/plugins/tmux.lua).
+# Otherwise herdr moves focus directly. prefix+h/j/k/l still work as defaults.
+#
+# Fallback if this feels laggy: delete these four blocks and use
+#   [keys]
+#   focus_pane_left  = ["prefix+h", "ctrl+alt+h"]
+#   focus_pane_down  = ["prefix+j", "ctrl+alt+j"]
+#   focus_pane_up    = ["prefix+k", "ctrl+alt+k"]
+#   focus_pane_right = ["prefix+l", "ctrl+alt+l"]
+# ---------------------------------------------------------------------------
+[[keys.command]]
+key = "ctrl+h"
+type = "shell"
+command = "~/.config/herdr/navigate.sh left"
+description = "focus pane left (vim-aware)"
+
+[[keys.command]]
+key = "ctrl+j"
+type = "shell"
+command = "~/.config/herdr/navigate.sh down"
+description = "focus pane down (vim-aware)"
+
+[[keys.command]]
+key = "ctrl+k"
+type = "shell"
+command = "~/.config/herdr/navigate.sh up"
+description = "focus pane up (vim-aware)"
+
+[[keys.command]]
+key = "ctrl+l"
+type = "shell"
+command = "~/.config/herdr/navigate.sh right"
+description = "focus pane right (vim-aware)"

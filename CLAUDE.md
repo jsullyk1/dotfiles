@@ -30,6 +30,7 @@ slide_and_stow nvim $HOME
 ./terminal.sh   # kitty + zsh + tmux
 ./nvim.sh       # neovim + stow nvim config
 ./tools.sh      # LLVM, Rust, Node/NVM, Zig, tree-sitter CLI, etc.
+./herdr.sh      # herdr TUI (agent multiplexer) + stow herdr config
 ```
 
 ## Package Structure
@@ -42,6 +43,7 @@ Each top-level directory is a stow package:
 - `kitty/` → `~/.config/kitty/`
 - `yazi/` → `~/.config/yazi/`
 - `fonts/` → `~/.local/share/fonts/`
+- `herdr/` → `~/.config/herdr/` (stow with `--no-folding`: herdr keeps logs/sockets in that dir)
 
 ## Neovim Architecture
 
@@ -74,7 +76,7 @@ lua/
 | `none-ls.lua` | Formatting via null-ls |
 | `whichkey.lua` | Keybinding discovery (`<Space>?`) |
 | `statusbar.lua` | Status line |
-| `tmux.lua` | vim-tmux-navigator integration |
+| `tmux.lua` | `<C-h/j/k/l>` split/pane navigation: herdr when `$HERDR_PANE_ID` is set, else vim-tmux-navigator |
 
 **Leader key**: `<Space>`
 
@@ -101,6 +103,13 @@ Config at `tmux/.tmux.conf`. Uses TPM (Tmux Plugin Manager). Key plugins:
 - `tmux-onedark-theme` — matching colorscheme
 
 Custom powerline theme: `tmux/.config/tmux-powerline/themes/jsully.sh`
+
+## Herdr
+
+[herdr TUI](https://herdr.dev/tui/) is used instead of tmux for running agents; don't nest it inside tmux (agent status detection breaks). Config: `herdr/.config/herdr/config.toml` — validate with `herdr config check`, reload with `herdr server reload-config`. Herdr's settings UI writes through the stow symlink into the repo.
+
+- Theme: built-in `one-dark` overridden with onedark.nvim's "warmer" palette, `panel_bg = "reset"` for transparency.
+- Navigation: `ctrl+h/j/k/l` run `navigate.sh`, which forwards the key if the pane's foreground process is vim/nvim/fzf, else calls `herdr pane focus`. At nvim's edge, `tmux.lua` calls `herdr pane focus`. A `ctrl+alt+hjkl` fallback is documented in the config.
 
 ## Zsh
 
