@@ -31,6 +31,4 @@ if [[ $s(command -v rg) ]]; then
     export FZF_DEFAULT_COMMAND='rg --hidden --ignore .git -g ""'
 fi
 
-if [[ $s(command -v zoxide) ]]; then
-    eval "$(zoxide init --cmd cd zsh)"
-fi
+eval "$(zoxide init --cmd cd zsh)"
