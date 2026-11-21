@@ -28,6 +28,28 @@ certain functionality is required. Each should be self contained with the except
 that most will require bootstrap be run first.
 
 
+### WezTerm
+
+Install WezTerm and the **JetBrainsMono Nerd Font Mono** font on the machine
+running the terminal, then deploy the configuration:
+
+```sh
+./wezterm.sh
+```
+
+On Linux/macOS this uses Stow. In WSL it discovers the Windows user profile
+through Windows interop and copies the config to `%USERPROFILE%\.wezterm.lua`,
+backing up any different existing config first. Reruns are safe; run it again
+after changing the repo config because the Windows copy is not a symlink.
+`./terminal.sh` also uses this installer automatically in WSL instead of
+installing Linux Kitty. Windows interop must be enabled; the installer does
+not install WezTerm or fonts on Windows.
+
+`wezterm/.wezterm.lua` matches Kitty's OneDark Pro palette, font size, 96%
+background opacity, 10px padding, and initial 100-column by 20-row window.
+Background blur is macOS-only. Ctrl+h/j/k/l remain available to Herdr and Neovim.
+On Windows, the config also searches the per-user Windows font directory.
+
 ### Telescope Info
 
 (From the nvim kickstarter scripts)
